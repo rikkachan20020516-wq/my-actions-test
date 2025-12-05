@@ -1,0 +1,17 @@
+[O[Iname: Hello Windows 世界！
+
+on: [push]
+
+jobs:
+  greet:
+    runs-on: windows-latest
+    steps:
+      - name: 打个招呼
+        run: echo "你好！我是 GitHub Actions！来自趙涵廷的 Windows 电脑！"
+
+      - name: 显示时间
+        run: Get-Date
+
+      - name: 显示系统信息
+        shell: powershell
+        run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
