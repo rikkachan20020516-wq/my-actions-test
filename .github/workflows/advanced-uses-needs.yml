@@ -1,6 +1,8 @@
 name: Advanced Uses & Needs Verification
 
 on:
+  schedule:
+    - cron: '45 8 * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -42,4 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execution Summary
-        run: echo "Verification complete:checkout → windows → ubuntu → summary"
+        run: |
+              echo "Verification complete:checkout → windows → ubuntu → summary"
+              echo "お疲れ様です。"
