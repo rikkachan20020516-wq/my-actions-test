@@ -6,12 +6,12 @@ jobs:
   greet:
     runs-on: windows-latest
     steps:
-      - name: 打个招呼
-        run: echo "你好！我是 GitHub Actions！来自趙涵廷的 Windows 电脑！"
+      - name: ご挨拶
+        run: echo "hello！"
 
-      - name: 显示时间
+      - name: 時間表示
         run: Get-Date
 
-      - name: 显示系统信息
+      - name: システムインフォメーション表示
         shell: powershell
         run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
