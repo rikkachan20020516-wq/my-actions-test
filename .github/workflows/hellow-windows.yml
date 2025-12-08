@@ -1,6 +1,9 @@
 name: Hello Windows 世界！
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   greet:
@@ -15,3 +18,14 @@ jobs:
       - name: システムインフォメーション表示
         shell: powershell
         run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
+        
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ubuntuで挨拶
+        run: echo "こんにちは！私は Ubuntu runner です！"
+      - name: Linuxバージョン表示
+        run: lsb_release -a
+      - name: 現在の時刻（UTC）
+        run: date
+      
