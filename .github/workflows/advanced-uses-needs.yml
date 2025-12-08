@@ -1,6 +1,5 @@
 name: Advanced Uses & Needs Verification
 
-# 正确的写法：所有触发器都和 on: 同级
 on:
   workflow_dispatch:
   push:
