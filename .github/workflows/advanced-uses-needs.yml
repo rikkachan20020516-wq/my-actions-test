@@ -1,5 +1,6 @@
 name: Advanced Uses & Needs Verification
 
+# 正确的写法：所有触发器都和 on: 同级
 on:
   workflow_dispatch:
   push:
@@ -42,4 +43,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execution Summary
-        run: echo "Verification complete: checkout → windows → ubuntu → summary"
+        run: echo "Verification complete:checkout → windows → ubuntu → summary"
