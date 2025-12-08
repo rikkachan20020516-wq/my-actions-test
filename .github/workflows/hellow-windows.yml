@@ -2,8 +2,8 @@ name: Hello Windows 世界！
 
 on: 
   push:
-    branches:
-      - main
+    paths:
+      - '.github/workflows/hello-windows.yml'
 
 jobs:
   greet:
