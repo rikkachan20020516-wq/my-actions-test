@@ -1,0 +1,45 @@
+name: Advanced Uses & Needs Verification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  checkout-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout (uses demonstration)
+        uses: actions/checkout@v4
+      - name: List Repository Files
+        run: ls -la
+
+  windows:
+    needs: checkout-demo
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Windows Environment Info
+        shell: powershell
+        run: |
+          echo "Windows runner started"
+          Get-Date
+
+  ubuntu:
+    needs: windows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ubuntu Environment Info
+        run: |
+          echo "Ubuntu runner started (after Windows)"
+          lsb_release -a
+
+  summary:
+    needs: [windows, ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execution Summary
+        run: echo "Verification complete: checkout → windows → ubuntu → summary"
