@@ -60,5 +60,5 @@ jobs:
         run: |
               echo "Verification complete:checkout → windows → ubuntu → summary"
               echo "$(date '+%Y年%m月%d日')"
-              echo "${{ env.user_name }} さん！"
+              echo "${{ env.My_Name }} さん！"
               echo "${{ env.GREETING }}"
