@@ -2,8 +2,8 @@ name: Hello Windows 世界！
 
 on: 
   push:
-    branches:
-      - main
+    paths:
+      - '.github/workflows/hello-windows.yml'
 
 jobs:
   greet:
@@ -28,4 +28,14 @@ jobs:
         run: lsb_release -a
       - name: 現在の時刻（UTC）
         run: date
+
+  summary:
+      needs: [greet, ubuntu-job]
+      runs-on: ubuntu-latest
+      steps:
+        - name: 実行結果まとめ
+          run: |
+            echo "=== Multi-OS 検証 完了 ==="
+            echo "Windows → Ubuntu → Summary の順序実行を確認"
+            echo "GitHub Actions の Job 依存関係が正常に動作"
       
