@@ -10,18 +10,18 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         node: [18, 20, 22]
     runs-on: ${{ matrix.os }}
-      steps:
-        - name: environment information
-          run: |
-            echo "=========================================="
-            echo "System：${{ matrix.os }}"
-            echo "Node version：${{ matrix.node }}"
-            echo "Hello！I'm 赵涵廷's matrix！"
-            echo "Date：$(date)"
-            echo "=========================================="
-        - name: set up and show the node version
-          uses: actions/setup-node@v4
-          with:
-            node-version: ${{ matrix.node }}
-        - name: verify the node version
-          run: node -v
+    steps:
+      - name: environment information
+        run: |
+          echo "=========================================="
+          echo "System：${{ matrix.os }}"
+          echo "Node version：${{ matrix.node }}"
+          echo "Hello！I'm 赵涵廷's matrix！"
+          echo "Date：$(date)"
+          echo "=========================================="
+      - name: set up and show the node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: verify the node version
+        run: node -v
