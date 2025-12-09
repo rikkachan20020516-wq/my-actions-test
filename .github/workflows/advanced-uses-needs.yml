@@ -16,6 +16,9 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
+  env:
+    MY_Name: "趙涵廷"
+    GREETING: "お疲れ様です。"
 
 jobs:
   checkout-demo:
@@ -55,5 +58,6 @@ jobs:
       - name: Execution Summary
         run: |
               echo "Verification complete:checkout → windows → ubuntu → summary"
-              echo "${{ inputs.user_name }} さん！"
-              echo "お疲れ様です。"
+              echo "$(date '+%Y年%m月%d日')"
+              echo "${{ env.user_name }} さん！"
+              echo "${{ env.GREETING }}"
