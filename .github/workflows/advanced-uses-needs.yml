@@ -28,7 +28,9 @@ jobs:
       - name: Repository Checkout (uses demonstration)
         uses: actions/checkout@v4
       - name: List Repository Files
-        run: ls -la
+        env:
+          LIST_FORMAT: "-la"
+        run: ls $LIST_FORMAT
 
   windows:
     needs: checkout-demo
