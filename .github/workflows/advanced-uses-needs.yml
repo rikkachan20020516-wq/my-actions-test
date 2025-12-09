@@ -1,7 +1,7 @@
 name: Advanced Uses & Needs Verification
 
 env:
-  MY_Name: "趙涵廷"
+  My_Name: "趙涵廷"
   GREETING: "お疲れ様です。"
 on:
   schedule:
