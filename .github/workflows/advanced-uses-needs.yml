@@ -50,6 +50,7 @@ jobs:
   summary:
     needs: [windows, ubuntu]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Execution Summary
         run: |
