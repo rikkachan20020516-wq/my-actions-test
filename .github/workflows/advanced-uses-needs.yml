@@ -52,7 +52,13 @@ jobs:
         run: |
           echo "Ubuntu runner started (after Windows)"
           lsb_release -a
-
+      - name: Risky step (will fail)
+        continue-on-error: true
+        run: exit 1    #failure on purpose
+      - name: Continue After Failure
+        run: echo "Although　failure, continue running."
+      
+        
   summary:
     needs: [windows, ubuntu]
     runs-on: ubuntu-latest
