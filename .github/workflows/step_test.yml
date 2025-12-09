@@ -1,0 +1,35 @@
+name: env + secrets + outputs 's test
+
+env:
+  PUBLIC_MESSAGE: "This is a public imformation!"
+  PROJECT_OWNER: "趙涵廷"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    outputs:
+      random_number: ${{ steps.generate.outputs.number }}
+    steps:
+      - name: Generate a random number（Inherited to the next job）
+        id: generate
+        run: echo "number=$((RANDOM % 100))" >> $GITHUB_OUTPUT
+
+  final:
+    needs: demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: output
+        env:
+          SECRET_MSG: ${{ secrets.SUPER_SECRET_MESSAGE }}
+        run: |
+          echo "=========================================="
+          echo "【env】owner：${{ env.PROJECT_OWNER }}"
+          echo "【env】public message：${{ env.PUBLIC_MESSAGE }}"
+          echo "【secrets】secret message：$SECRET_MSG"    
+          echo "【outputs】previous Job random number：${{ needs.demo.outputs.random_number }}"
+          echo "=========================================="
