@@ -50,7 +50,7 @@ jobs:
           Get-Date
       - name: Long Running Step
         timeout-minutes: 1
-        #run: sleep 90
+        run: sleep 0
 
   ubuntu:
     needs: windows
