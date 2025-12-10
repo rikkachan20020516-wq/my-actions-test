@@ -31,6 +31,12 @@ jobs:
         env:
           LIST_FORMAT: "-la"
         run: ls $LIST_FORMAT
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: confirm the node version
+        run: node -v
 
   windows:
     needs: checkout-demo
