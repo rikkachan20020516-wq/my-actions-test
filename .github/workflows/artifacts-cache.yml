@@ -6,7 +6,7 @@ on:
     paths:
       - '.github/workflows/artifacts-cache.yml'
 
-job:
+jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
