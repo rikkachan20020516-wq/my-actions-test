@@ -108,6 +108,6 @@ jobs:
 
       - name: show the ubuntu greeting
         run: |
-          echo: "========Ubuntu's greeting=========="
+          echo "========Ubuntu's greeting=========="
           cat ubuntu-greeting.txt
-          echo: "==================================="
+          echo "==================================="
