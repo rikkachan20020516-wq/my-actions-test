@@ -1,0 +1,60 @@
+name: Artifacts & Cache test
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/artifacts-cache.yml'
+
+job:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache npm (First time is slow but after the first time will be more quick)
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-npm-
+
+      - name: install the dependencies and generate the report file
+        run: |
+          npm init -y
+          npm install lodash
+          echo "# Zht's 11th chapter report" > report.md
+          echo "Generate time:$(date)" >> report.md
+          echo "Node version:$(node -v)" >> report.md
+          echo "Dependencies number:$(npm list --depth=0 | wc -l)" >> report.md
+
+      - name: update to the Artifacts (pass to the next job)
+        uses: actions/upload-artifact@v4
+        with:
+          name: zht-report
+          path: report.md
+          retention-days: 7
+
+  show:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the ZHT's report
+        uses: actions/download-artifact@v4
+        with:
+          name: zht-report
+          path: downloaded
+
+      - name: show the final report
+        run: |
+          echo "============================="
+          echo "ZHT's 11th chapter report"
+          echo "============================="
+          cat downloaded/report.md
+          echo "============================="
+          
