@@ -37,6 +37,15 @@ jobs:
           node-version: '20'
       - name: confirm the node version
         run: node -v
+      - name: initialize the npm
+        run: |
+          npm init -y
+          npm install
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: $${{runner.os}}-node- $${{hashFiles('**/package-lock.json')}}
 
   windows:
     needs: checkout-demo
