@@ -75,6 +75,16 @@ jobs:
         run: exit 1    #failure on purpose
       - name: Continue After Failure
         run: echo "Although　failure, continue running."
+      - name: generate a greet file
+        run: |
+          echo "Hello!I'm Ubuntu runner!" > ubuntu-greeting.txt
+          echo "Date:$(date)" >> ubuntu-greeting.txt
+          echo "Greet from zht!" >> ubuntu-greeting.txt
+      - name: update the greet file to the next job
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-greeting
+          path: ubuntu-greeting.txt
       
         
   summary:
@@ -91,3 +101,13 @@ jobs:
       - name: Clean Up (only if success)
         if: success()
         run: echo "clear the temprary file"
+      - name: download the ubuntu greet file
+        uses: actions/download-artifact@v4
+        with:
+          name: ubuntu-greeting
+
+      - name: show the ubuntu greeting
+        run: |
+          echo: "========Ubuntu's greeting=========="
+          cat ubuntu-greeting.txt
+          echo: "==================================="
