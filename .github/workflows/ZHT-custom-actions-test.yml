@@ -4,6 +4,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: rikkachan20020516-wq/ZHT-custom-actions@main
+      - uses: rikkachan20020516-wq/ZHT-custom-actions@v3
         with:
           name: "ZHT"
