@@ -2,7 +2,7 @@ name: Advanced Uses & Needs Verification
 
 env:
   My_Name: "趙涵廷"
-  GREETING: "お疲れ様です。"
+  GREETING: "Thank you for your hard work."
 permissions:
   contents: read
   actions: read
@@ -115,3 +115,4 @@ jobs:
           echo "========Ubuntu's greeting=========="
           cat ubuntu-greeting.txt
           echo "==================================="
+    
