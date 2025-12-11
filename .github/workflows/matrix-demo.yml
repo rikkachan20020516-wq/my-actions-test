@@ -25,3 +25,23 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: verify the node version
         run: node -v
+
+  smart-matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [18, 20, 22]
+        exclude:
+          - os: windows-latest
+            node: 18
+        include:
+          - os: ubuntu-latest
+            node: 24
+            special: "experimental"
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Smart matrix imformation
+        run: |
+          echo "OS: ${{ matrix.os }} | Node: ${{ matrix.node }}${{ matrix.special && ' (experiment version) ' || '' }}"
+        
