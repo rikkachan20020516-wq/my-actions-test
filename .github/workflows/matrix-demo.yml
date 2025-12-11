@@ -48,7 +48,7 @@ jobs:
   dynamic-setup:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.generate.output.matrix }}
+      matrix: ${{ steps.generate.outputs.matrix }}
     steps:
       - name: generate the dynamic matrix
         id: generate
