@@ -44,4 +44,22 @@ jobs:
       - name: Smart matrix imformation
         run: |
           echo "OS: ${{ matrix.os }} | Node: ${{ matrix.node }}${{ matrix.special && ' (experiment version) ' || '' }}"
-        
+
+  dynamic-setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate.output.matrix }}
+    steps:
+      - name: generate the dynamic matrix
+        id: generate
+        run: |
+          echo 'matrix={"node":["16", "18", "20", "22"]}' >> $GITHUB_OUTPUT
+
+  dynamic-test:
+    needs: dynamic-setup
+    strategy:
+      matrix: ${{ fromJson(needs.dynamic-setup.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: dynamic Node test
+        run: echo "Dynamically generated Node's version"
