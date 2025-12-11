@@ -62,4 +62,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: dynamic Node test
-        run: echo "Dynamically generated Node's version"
+        run: echo "Dynamically generated Node's version:${{ matrix.node }}"
