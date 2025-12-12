@@ -115,4 +115,16 @@ jobs:
           echo "========Ubuntu's greeting=========="
           cat ubuntu-greeting.txt
           echo "==================================="
+
+      - name: Slack 通知（Only when the whole workflow fail）
+        if: failure()                                    
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "text": ":alert: *Workflow failed！* :alert:\n*repository*: ${{ github.repository }}\n*branch*: ${{ github.ref_name }}\n*workon*: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
     
