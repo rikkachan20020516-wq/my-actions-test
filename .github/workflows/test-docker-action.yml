@@ -5,7 +5,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-      - uses: rikkachan20020516-wq/ZHT-custom-actions/ZHT-python-greet@v5
+      - uses: rikkachan20020516-wq/ZHT-custom-actions/ZHT-python-greet@v6
         with:
           name: "Mr.🌲"
       - run: echo "Blessing：${{ steps.zht-python-greet.outputs.blessing }}"
