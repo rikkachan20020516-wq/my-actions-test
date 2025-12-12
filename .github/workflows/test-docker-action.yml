@@ -1,0 +1,11 @@
+name: ZHT Python Docker Action's Test
+on: workflow_dispatch
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rikkachan20020516-wq/ZHT-custom-actions@v5
+        with:
+          name: "🌲さん"
+      - run: echo "Blessing：${{ steps.zht-python-greet.outputs.blessing }}"
