@@ -10,4 +10,4 @@ jobs:
         with:
           name: "Mr.🌲"
 
-      - run: echo "Blessing: ${{ steps.zht_python_greet.outputs.blessing }}"
+      - run: echo "Blessing:${{ steps.zht_python_greet.outputs.blessing }}"
