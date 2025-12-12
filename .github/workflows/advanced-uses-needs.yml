@@ -102,6 +102,9 @@ jobs:
               echo "$(date '+%Y年%m月%d日')"
               echo "${{ env.My_Name }} さん！"
               echo "${{ env.GREETING }}"
+      - name: fail on purpose
+        run: exit 1
+      
       - name: Clean Up (only if success)
         if: success()
         run: echo "clear the temprary file"
